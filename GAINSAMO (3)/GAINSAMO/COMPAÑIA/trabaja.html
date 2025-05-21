@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con Nosotros - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-claro: #E9E9E9;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris);
+            color: var(--negro);
+        }
+
+        header {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--blanco);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--naranja);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--naranja), var(--naranja-claro));
+            color: var(--blanco);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .jobs-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-card h3 {
+            font-size: 1.2rem;
+            color: var(--naranja);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-card p {
+            line-height: 1.6;
+            color: var(--negro);
+        }
+
+        .job-card button {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        .job-card button:hover {
+            background-color: var(--naranja-claro);
+        }
+
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 4rem 2rem;
+            border-top: 2px solid var(--naranja);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--naranja);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--naranja);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--naranja);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--blanco);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--naranja);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--gris-claro);
+            border-radius: 30px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--blanco);
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-btn {
+            width: 100%;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--naranja-claro);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,107,0,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../PAGINAWEB.html" class="logo">GAINSAMO</a>
+    </header>
+    <div class="hero">
+        <h1>Trabaja con Nosotros</h1>
+        <p>Únete a nuestro equipo y forma parte de una empresa comprometida con el bienestar y el rendimiento.</p>
+    </div>
+    <div class="content">
+        <div class="jobs-section">
+            <div class="job-card">
+                <h3>Asesor de Ventas</h3>
+                <p>Buscamos personas apasionadas por el fitness para asesorar a nuestros clientes en la elección de productos.</p>
+                <button>Aplicar</button>
+            </div>
+            <div class="job-card">
+                <h3>Especialista en Marketing</h3>
+                <p>Únete a nuestro equipo de marketing y ayuda a expandir nuestra marca a nivel global.</p>
+                <button>Aplicar</button>
+            </div>
+            <div class="job-card">
+                <h3>Nutriólogo Deportivo</h3>
+                <p>Colabora con nosotros para ofrecer asesoramiento nutricional personalizado a nuestros clientes.</p>
+                <button>Aplicar</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>COMPAÑÍA</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="trabaja.html">Trabaja con nosotros</a></li>
+                    <li><a href="sostenibilidad.html">Sostenibilidad</a></li>
+                    <li><a href="prensa.html">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>AYUDA</h3>
+                <ul>
+                    <li><a href="../AYUDA/centro.html">Centro de ayuda</a></li>
+                    <li><a href="../AYUDA/estado.html">Estado del pedido</a></li>
+                    <li><a href="../AYUDA/devoluciones.html">Devoluciones</a></li>
+                    <li><a href="../AYUDA/metodos.html">Métodos de pago</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="../LEGAL/terminos.html">Términos y condiciones</a></li>
+                    <li><a href="../LEGAL/privacidad.html">Política de privacidad</a></li>
+                    <li><a href="../LEGAL/aviso.html">Aviso legal</a></li>
+                    <li><a href="../LEGAL/cookies.html">Política de cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONTACTO</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 800-GAIN-SAMO</li>
+                    <li><i class="fas fa-envelope"></i> info@gainsamo.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> CDMX, México</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>NEWSLETTER</h3>
+                <p>Suscríbete para recibir ofertas exclusivas y consejos de fitness.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Tu correo electrónico">
+                    <button type="submit" class="newsletter-btn">SUSCRIBIRME</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 GAINSAMO. TODOS LOS DERECHOS RESERVADOS.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perder Masa - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-claro: #E9E9E9;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris);
+            color: var(--negro);
+        }
+
+        header {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--blanco);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--naranja);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--naranja);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .category {
+            margin-bottom: 2rem;
+        }
+
+        .category h2 {
+            color: var(--naranja);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+            color: var(--negro);
+        }
+
+        .card-content p {
+            margin: 0.5rem 0;
+            color: var(--gris-claro);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--naranja-claro);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../PAGINAWEB.html" class="logo">GAINSAMO</a>
+        <nav>
+            <a href="../PAGINAWEB.html">Inicio</a>
+            <a href="masa.html">Masa Muscular</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="salud.html">Salud y Bienestar</a>
+            <a href="perdidap.html">Pérdida de Peso</a>
+            <a href="ofertas.html">Ofertas</a>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Categoría 1 -->
+        <div class="category">
+            <h2>Quemadores de Grasa</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://http2.mlstatic.com/D_609607-MLU75119693344_032024-C.jpg" alt="Quemador 1">
+                    <div class="card-content">
+                        <h3>Quemador 1</h3>
+                        <p>$500.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://http2.mlstatic.com/D_809296-MLU75633948516_042024-C.jpg" alt="Quemador 2">
+                    <div class="card-content">
+                        <h3>Quemador 2</h3>
+                        <p>$750.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i5.walmartimages.com/asr/453c51d4-2fbb-4f75-8932-aac1cebf7aa2.1c1b523ca5704cd3044ea78e20b53fd5.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Quemador 3">
+                    <div class="card-content">
+                        <h3>Quemador 3</h3>
+                        <p>$300.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría 2 -->
+        <div class="category">
+            <h2>Proteínas Bajas en Calorías</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://media.revistagq.com/photos/652e5fa75bbf9bbc888e07c4/3:4/w_748%2Cc_limit/PBN.jpg" alt="Proteína 1">
+                    <div class="card-content">
+                        <h3>Proteína 1</h3>
+                        <p>$450.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://www.suplementosgym.com.mx/media/catalog/product/cache/2/small_image/300x/713b5111b78bd93a4a79b9899d195c9f/d/y/dymatize-iso-100-5lb.jpg" alt="Proteína 2">
+                    <div class="card-content">
+                        <h3>Proteína 2</h3>
+                        <p>$600.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaaM7d70Amzxse0U_wO9XmsgXm8mWN0ENeIA&s" alt="Proteína 3">
+                    <div class="card-content">
+                        <h3>Proteína 3</h3>
+                        <p>$700.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría 3 -->
+        <div class="category">
+            <h2>Accesorios para Entrenamiento</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://www.muscul-fitness.com/wp-content/uploads/2019/06/TRX-ENTRENAMIENTO-SUSPENSION-300x300.jpg.webp" alt="Accesorio 1">
+                    <div class="card-content">
+                        <h3>Accesorio 1</h3>
+                        <p>$200.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://static.wixstatic.com/media/78e004_d14af84cd1944e2d97e4471c5674d063~mv2.jpeg/v1/fill/w_280,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/78e004_d14af84cd1944e2d97e4471c5674d063~mv2.jpeg" alt="Accesorio 2">
+                    <div class="card-content">
+                        <h3>Accesorio 2</h3>
+                        <p>$350.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCD9g2uq4XY2e6YKHUyymN9rVGIoch-JtSAg&s" alt="Accesorio 3">
+                    <div class="card-content">
+                        <h3>Accesorio 3</h3>
+                        <p>$400.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría 4 -->
+        <div class="category">
+            <h2>Ropa para Cardio</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://i5.walmartimages.com/asr/56da93a2-7664-4b65-a0ad-2e59c0f5356f.ba2cfa823b4f0823a8b5dd67e2b0bd57.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Ropa 1">
+                    <div class="card-content">
+                        <h3>Ropa 1</h3>
+                        <p>$1,200.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIgdKHD-1-bM-GxvXbQ42pfwEsJ3SZN4Te7w&s" alt="Ropa 2">
+                    <div class="card-content">
+                        <h3>Ropa 2</h3>
+                        <p>$1,500.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i5.walmartimages.com/asr/bac9c2ea-5097-4810-9e0f-78e4ad039500.85a0ca8ec0529199e60c327569941656.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Ropa 3">
+                    <div class="card-content">
+                        <h3>Ropa 3</h3>
+                        <p>$2,000.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

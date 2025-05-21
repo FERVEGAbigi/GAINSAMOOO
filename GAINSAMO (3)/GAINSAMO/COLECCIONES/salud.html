@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud y Bienestar - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-claro: #E9E9E9;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris);
+            color: var(--negro);
+        }
+
+        header {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--blanco);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--naranja);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--naranja);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .category {
+            margin-bottom: 2rem;
+        }
+
+        .category h2 {
+            color: var(--naranja);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+            color: var(--negro);
+        }
+
+        .card-content p {
+            margin: 0.5rem 0;
+            color: var(--gris-claro);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--naranja-claro);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../PAGINAWEB.html" class="logo">GAINSAMO</a>
+        <nav>
+            <a href="../PAGINAWEB.html">Inicio</a>
+            <a href="masa.html">Masa Muscular</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="saludb.html">Salud y Bienestar</a>
+            <a href="perdidap.html">Pérdida de Peso</a>
+            <a href="ofertas.html">Ofertas</a>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Categoría 1 -->
+        <div class="category">
+            <h2>Vitaminas y Minerales</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://nutricionbalanceada.mx/cdn/shop/files/arte1_4cede23d-ab84-4893-ac86-79add4edc2ef.jpg?v=1706632647" alt="Vitamina 1">
+                    <div class="card-content">
+                        <h3>Vitamina 1</h3>
+                        <p>$300.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_985576-MLU72836409581_112023-O.webp" alt="Vitamina 2">
+                    <div class="card-content">
+                        <h3>Vitamina 2</h3>
+                        <p>$400.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://m.media-amazon.com/images/I/718lm+9fc-L._AC_UF1000,1000_QL80_.jpg" alt="Vitamina 3">
+                    <div class="card-content">
+                        <h3>Vitamina 3</h3>
+                        <p>$500.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría 2 -->
+        <div class="category">
+            <h2>Suplementos Naturales</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://www.suplementosgym.com.mx/media/catalog/product/cache/2/small_image/300x/713b5111b78bd93a4a79b9899d195c9f/m/u/muscletech-nitro-tech-100_-whey-gold-5lb_2.jpg" alt="Suplemento 1">
+                    <div class="card-content">
+                        <h3>Suplemento 1</h3>
+                        <p>$600.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://vader-prod.s3.amazonaws.com/1647534457-41UoQGPKAL._SL500_.jpg" alt="Suplemento 2">
+                    <div class="card-content">
+                        <h3>Suplemento 2</h3>
+                        <p>$700.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUVPsvtRjPY4JQiJDeeb59DicufBXw1sA--Q&s" alt="Suplemento 3">
+                    <div class="card-content">
+                        <h3>Suplemento 3</h3>
+                        <p>$800.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría 3 -->
+        <div class="category">
+            <h2>Productos Orgánicos</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg0R5-wgwM8WFFFN2ebUtZVRWen_-2TychzQ&s" alt="Orgánico 1">
+                    <div class="card-content">
+                        <h3>Orgánico 1</h3>
+                        <p>$250.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://www.suplementosgym.com.mx/media/catalog/product/cache/2/image/600x/2522abfce08318a7b04a0a39d7099381/o/r/organiccoffee.jpg" alt="Orgánico 2">
+                    <div class="card-content">
+                        <h3>Orgánico 2</h3>
+                        <p>$300.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://m.media-amazon.com/images/I/71wfS7Um-XL._AC_UF1000,1000_QL80_DpWeblab_.jpg" alt="Orgánico 3">
+                    <div class="card-content">
+                        <h3>Orgánico 3</h3>
+                        <p>$350.00 MXN</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

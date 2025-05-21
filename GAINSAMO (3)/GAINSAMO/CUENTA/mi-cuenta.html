@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #333333;
+            --gris-claro: #444444;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--negro);
+            color: var(--blanco);
+        }
+
+        .account-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Menú lateral */
+        .account-sidebar {
+            background-color: var(--gris);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+        }
+
+        .account-nav h3 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--naranja);
+            border-bottom: 1px solid var(--gris-claro);
+            padding-bottom: 0.5rem;
+        }
+
+        .account-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .account-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .account-nav a {
+            display: block;
+            padding: 0.7rem 0.5rem;
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .account-nav a:hover, .account-nav a.active {
+            background-color: rgba(255, 107, 0, 0.2);
+            color: var(--naranja);
+        }
+
+        /* Contenido principal */
+        .account-content {
+            background-color: var(--gris);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+        }
+
+        .account-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--gris-claro);
+            padding-bottom: 1rem;
+        }
+
+        .account-title {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--blanco);
+        }
+
+        .personal-info {
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--naranja);
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .btn-edit, .btn-back {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .btn-edit:hover, .btn-back:hover {
+            background-color: var(--naranja-claro);
+        }
+    </style>
+</head>
+<body>
+    <main class="account-container">
+        <!-- Menú lateral -->
+        <aside class="account-sidebar">
+            <nav class="account-nav">
+                <h3>Mi Cuenta</h3>
+                <ul>
+                    <li><a href="mi-cuenta.html" class="active">Información Personal</a></li>
+                    <li><a href="mis-pedidos.html">Mis Pedidos</a></li>
+                    <li><a href="cerrar-sesion.html">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="account-content">
+            <div class="account-header">
+                <h1 class="account-title">Hola, <span id="userName">Usuario</span></h1>
+            </div>
+
+            <!-- Información personal -->
+            <section class="personal-info">
+                <h2>Información Personal</h2>
+                <div class="info-item">
+                    <div class="info-label">Nombre completo</div>
+                    <div class="info-value" id="fullName">Cargando...</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Correo electrónico</div>
+                    <div class="info-value" id="email">Cargando...</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Teléfono</div>
+                    <div class="info-value" id="phone">Cargando...</div>
+                </div>
+                <button class="btn-edit">Editar Información</button>
+                <button class="btn-back" onclick="window.location.href='../PAGINAWEB.html'">Regresar a la Página Principal</button>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Recuperar los datos del usuario desde localStorage
+            const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+            if (usuario) {
+                // Mostrar los datos en la página
+                document.getElementById('userName').textContent = usuario.nombre || "Usuario";
+                document.getElementById('fullName').textContent = usuario.nombre || "No especificado";
+                document.getElementById('email').textContent = usuario.email || "No especificado";
+                document.getElementById('phone').textContent = usuario.telefono || "No especificado";
+            } else {
+                // Redirigir automáticamente al inicio de sesión si no hay datos
+                alert("No has iniciado sesión. Redirigiendo al inicio de sesión...");
+                window.location.href = "inicio-sesion.html";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-claro: #E9E9E9;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris);
+            color: var(--negro);
+        }
+
+        .header {
+            width: 100%;
+            background-color: var(--negro);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: var(--naranja);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--negro);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .order {
+            border: 1px solid var(--gris-claro);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: var(--gris-claro);
+        }
+
+        .order h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--naranja);
+        }
+
+        .order p {
+            margin: 0.3rem 0;
+        }
+
+        .btn-back {
+            display: block;
+            margin: 2rem auto 0;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: var(--naranja-claro);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GAINSAMO</h1>
+    </div>
+    <div class="container">
+        <h2>Mis Pedidos</h2>
+        <div id="orders">
+            <!-- Los pedidos se cargarán aquí dinámicamente -->
+        </div>
+        <a href="mi-cuenta.html" class="btn-back">Regresar a Mi Cuenta</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simulación de pedidos
+            const pedidos = [
+                {
+                    id: 1,
+                    fecha: '2025-04-01',
+                    total: '$1,200.00',
+                    estado: 'Enviado'
+                },
+                {
+                    id: 2,
+                    fecha: '2025-03-15',
+                    total: '$850.00',
+                    estado: 'Entregado'
+                },
+                {
+                    id: 3,
+                    fecha: '2025-02-28',
+                    total: '$450.00',
+                    estado: 'Pendiente'
+                }
+            ];
+
+            const ordersContainer = document.getElementById('orders');
+
+            if (pedidos.length > 0) {
+                pedidos.forEach(pedido => {
+                    const orderDiv = document.createElement('div');
+                    orderDiv.classList.add('order');
+                    orderDiv.innerHTML = `
+                        <h3>Pedido #${pedido.id}</h3>
+                        <p><strong>Fecha:</strong> ${pedido.fecha}</p>
+                        <p><strong>Total:</strong> ${pedido.total}</p>
+                        <p><strong>Estado:</strong> ${pedido.estado}</p>
+                    `;
+                    ordersContainer.appendChild(orderDiv);
+                });
+            } else {
+                ordersContainer.innerHTML = '<p>No tienes pedidos registrados.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

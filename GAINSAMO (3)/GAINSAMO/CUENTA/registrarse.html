@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - Gainsamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-claro: #E9E9E9;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris);
+            color: var(--negro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            background-color: var(--negro);
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            color: var(--naranja);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: var(--negro); /* Fondo oscuro */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Ancho aumentado */
+            text-align: center;
+            margin-top: 6rem; /* Espacio para evitar que el formulario quede detrás del header */
+        }
+
+        h2 {
+            color: var(--blanco); /* Texto blanco para contraste */
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--blanco); /* Texto blanco */
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gris-claro);
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--gris-claro); /* Fondo claro para contraste */
+            color: var(--negro); /* Texto oscuro */
+        }
+
+        .form-group input::placeholder {
+            color: var(--gris);
+        }
+
+        .btn-register {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-register:hover {
+            background-color: var(--naranja-claro);
+        }
+
+        .footer {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--naranja);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GAINSAMO</h1>
+    </div>
+    <div class="register-container">
+        <h2>Registrarse</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" placeholder="Ingresa tu nombre completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" placeholder="Ingresa tu número de teléfono" required>
+            </div>
+            <button type="submit" class="btn-register">Registrarse</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>¿Ya tienes una cuenta? <a href="inicio-sesion.html">Inicia sesión aquí</a></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtener los datos del formulario
+            const nombre = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('phone').value;
+
+            // Guardar los datos en localStorage
+            const usuario = {
+                nombre: nombre,
+                email: email,
+                telefono: telefono
+            };
+            localStorage.setItem("usuario", JSON.stringify(usuario));
+
+            // Redirigir a la página de "Mi Cuenta"
+            alert("Registro exitoso. Redirigiendo a tu cuenta...");
+            window.location.href = "mi-cuenta.html";
+        });
+    </script>
+</body>
+</html>

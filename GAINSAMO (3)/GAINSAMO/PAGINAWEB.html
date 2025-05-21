@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gainsamo - Tienda de Suplementos y Fitness</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset y estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Paleta de colores */
+        :root {
+            --naranja: #FF6B00;
+            --naranja-claro: #FF8C42;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+            --gris: #F5F5F5;
+            --gris-oscuro: #333;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--naranja);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255,107,0,0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255,107,0,0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255,107,0,0.7), 0 0 25px rgba(255,140,66,0.5);
+            }
+        }
+
+        /* Barra de navegación superior */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .top-nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .top-nav a:hover {
+            color: var(--naranja);
+        }
+
+        /* Motor de búsqueda */
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            padding-right: 2.5rem;
+            border: 1px solid var(--gris-oscuro);
+            border-radius: 30px;
+            background-color: var(--negro);
+            color: var(--blanco);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--naranja);
+            box-shadow: 0 0 0 2px rgba(255,107,0,0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--blanco);
+            cursor: pointer;
+        }
+
+        /* Iconos de usuario/carrito */
+        .header-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--blanco);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: var(--naranja);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Navegación principal */
+        .main-nav {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--blanco);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--naranja);
+        }
+
+        /* Menú desplegable */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--negro);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--naranja);
+        }
+
+        .dropdown-menu.active .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--blanco);
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--naranja);
+            text-shadow: 0 0 8px rgba(255,107,0,0.5);
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--naranja);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--naranja);
+            box-shadow: 0 0 15px rgba(255,107,0,0.5);
+        }
+
+        /* Sección de categorías */
+        .categories-section {
+            padding: 4rem 2rem;
+            background-color: var(--blanco);
+        }
+
+        .section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.2rem;
+            color: var(--negro);
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--naranja);
+            margin: 1rem auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background-color: var(--gris);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--negro);
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background-color: var(--naranja);
+            color: var(--blanco);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--naranja);
+        }
+
+        .category-card:hover .category-icon {
+            color: var(--blanco);
+        }
+
+        .category-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Sección de productos destacados */
+        .featured-products {
+            padding: 4rem 2rem;
+            background-color: var(--gris);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--negro);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var (--negro);
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .product-brand {
+            color: var(--gris-oscuro);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--naranja);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: var(--gris-oscuro);
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background-color: var(--negro);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--naranja);
+        }
+
+        /* Banner promocional */
+        .promo-banner {
+            background-color: var(--negro);
+            color: var (--blanco);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .promo-banner h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--naranja);
+        }
+
+        .promo-banner p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Sección de marcas */
+        .brands-section {
+            padding: 4rem 2rem;
+            background-color: var(--blanco);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .brand-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .brand-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .brand-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 4rem 2rem;
+            border-top: 2px solid var(--naranja);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--naranja);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--naranja);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--naranja);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--blanco);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--naranja);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--gris-oscuro);
+            border-radius: 30px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--blanco);
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .newsletter-btn {
+            width: 100%;
+            background-color: var(--naranja);
+            color: var (--blanco);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--naranja-claro);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,107,0,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Estilo para el menú desplegable del carrito */
+        .cart-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: var(--blanco);
+            border: 1px solid var(--gris-claro);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 1rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        .cart-dropdown.active {
+            display: block;
+        }
+
+        .cart-dropdown h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--naranja);
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .cart-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gris-claro);
+            padding-bottom: 0.5rem;
+        }
+
+        .cart-items li:last-child {
+            border-bottom: none;
+        }
+
+        .cart-items .item-name {
+            font-size: 0.9rem;
+            color: var(--negro);
+        }
+
+        .cart-items .item-price {
+            font-size: 0.9rem;
+            color: var(--naranja);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--naranja-claro);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .search-container {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .top-nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .search-container {
+                width: 100%;
+                order: 2;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-banner {
+                height: 400px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">GAINSAMO</div>
+        
+        <div class="top-nav">
+            <a href="#"><i class="fas fa-phone-alt"></i> 800-GAIN-SAMO</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Localizador de tiendas</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Buscar productos...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        
+        <div class="header-icons">
+            <div class="dropdown-menu">
+                <a href="#" class="icon-btn user-icon"><i class="fas fa-user"></i></a>
+                <div class="dropdown-content">
+                    <a href="CUENTA/inicio-sesion.html">Iniciar sesión</a>
+                    <a href="CUENTA/registrarse.html">Registrarse</a>
+                    <a href="CUENTA/mi-cuenta.html">Mi cuenta</a>
+                    <a href="CUENTA/mis-pedidos.html">Mis pedidos</a>
+                    <a href="CUENTA/cerrar-sesion.html">Cerrar sesión</a>
+                </div>
+            </div>
+            <a href="#" class="icon-btn">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="#" class="icon-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Agregar el contenedor del menú desplegable del carrito -->
+    <div class="cart-dropdown">
+        <h3>Carrito de Compras</h3>
+        <ul class="cart-items"></ul>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-price">$0.00</span>
+        </div>
+        <button class="checkout-btn">Finalizar Compra</button>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li><a href="PAGINAWEB.html"><i class="fas fa-home"></i> INICIO</a></li>
+            <li class="dropdown">
+                <a href="COLECCIONES/masa.html"><i class="fas fa-dumbbell"></i> MASA MUSCULAR <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="COLECCIONES/proteinas.html"><i class="fas fa-flask"></i> Proteínas</a>
+                    <a href="COLECCIONES/creatinas.html"><i class="fas fa-bolt"></i> Creatinas</a>
+                    <a href="COLECCIONES/aminoacidos.html"><i class="fas fa-dna"></i> Aminoácidos</a>
+                    <a href="COLECCIONES/hmb.html"><i class="fas fa-cube"></i> HMB</a>
+                    <a href="COLECCIONES/pre-entrenos.html"><i class="fas fa-fire"></i> Pre-entrenos</a>
+                    <a href="COLECCIONES/ganadores.html"><i class="fas fa-weight"></i> Ganadores de peso</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="COLECCIONES/perdidap.html"><i class="fas fa-weight"></i> PÉRDIDA DE PESO <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="COLECCIONES/quemadores.html"><i class="fas fa-burn"></i> Quemadores</a>
+                    <a href="COLECCIONES/termogenicos.html"><i class="fas fa-temperature-high"></i> Termogénicos</a>
+                    <a href="COLECCIONES/carnitina.html"><i class="fas fa-running"></i> Carnitina</a>
+                    <a href="COLECCIONES/cla.html"><i class="fas fa-leaf"></i> CLA</a>
+                    <a href="COLECCIONES/supresores.html"><i class="fas fa-utensils"></i> Supresores de apetito</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="COLECCIONES/saludb.html"><i class="fas fa-heartbeat"></i> SALUD Y BIENESTAR <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="COLECCIONES/vitaminas.html"><i class="fas fa-capsules"></i> Vitaminas</a>
+                    <a href="COLECCIONES/omega3.html"><i class="fas fa-fish"></i> Omega-3</a>
+                    <a href="COLECCIONES/glutamina.html"><i class="fas fa-atom"></i> Glutamina</a>
+                    <a href="COLECCIONES/hidratos.html"><i class="fas fa-bread-slice"></i> Hidratos de carbono</a>
+                    <a href="COLECCIONES/minerales.html"><i class="fas fa-pills"></i> Minerales</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="COLECCIONES/accesorios.html"><i class="fas fa-tshirt"></i> ACCESORIOS <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="COLECCIONES/cinturones.html"><i class="fas fa-belt"></i> Cinturones</a>
+                    <a href="COLECCIONES/straps.html"><i class="fas fa-grip-lines"></i> Straps</a>
+                    <a href="COLECCIONES/rodilleras.html"><i class="fas fa-procedures"></i> Rodilleras</a>
+                    <a href="COLECCIONES/munequeras.html"><i class="fas fa-hand-paper"></i> Muñequeras</a>
+                    <a href="COLECCIONES/monitores.html"><i class="fas fa-heartbeat"></i> Monitores cardíacos</a>
+                </div>
+            </li>
+            <li><a href="COLECCIONES/ofertas.html"><i class="fas fa-tag"></i> OFERTAS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>MAXIMIZA TUS RESULTADOS</h1>
+            <p>Los mejores suplementos deportivos y accesorios de fitness para alcanzar tus metas. Calidad profesional a precios accesibles.</p>
+            <a href="#productos" class="btn">VER PRODUCTOS</a>
+        </div>
+    </section>
+
+    <!-- Sección de categorías -->
+    <section class="categories-section">
+        <h2 class="section-title">NUESTRAS CATEGORÍAS</h2>
+        <div class="categories-grid">
+            <a href="COLECCIONES/proteinas.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-flask"></i></div>
+                <h3 class="category-title">PROTEÍNAS</h3>
+            </a>
+            <a href="COLECCIONES/creatinas.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="category-title">CREATINAS</h3>
+            </a>
+            <a href="COLECCIONES/pre-entrenos.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-fire"></i></div>
+                <h3 class="category-title">PRE-ENTRENOS</h3>
+            </a>
+            <a href="COLECCIONES/aminoacidos.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-dna"></i></div>
+                <h3 class="category-title">AMINOÁCIDOS</h3>
+            </a>
+            <a href="COLECCIONES/quemadores.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-burn"></i></div>
+                <h3 class="category-title">QUEMADORES</h3>
+            </a>
+            <a href="COLECCIONES/vitaminas.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-capsules"></i></div>
+                <h3 class="category-title">VITAMINAS</h3>
+            </a>
+            <a href="COLECCIONES/accesorios.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-dumbbell"></i></div>
+                <h3 class="category-title">ACCESORIOS</h3>
+            </a>
+            <a href="COLECCIONES/ofertas.html" class="category-card">
+                <div class="category-icon"><i class="fas fa-tag"></i></div>
+                <h3 class="category-title">OFERTAS</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de productos destacados - Masa Muscular -->
+    <section class="featured-products" id="productos">
+        <h2 class="section-title">SUPLEMENTOS PARA MASA MUSCULAR</h2>
+        <div class="products-grid">
+            <!-- Proteína Whey -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">MÁS VENDIDO</span>
+                    <img src="https://m.media-amazon.com/images/I/41VXrCjCMzL._AC_.jpg" alt="Proteína Whey">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PROTEÍNA WHEY GOLD</h3>
+                    <p class="product-brand">Gainsamo Performance</p>
+                    <div class="product-price">
+                        <span class="current-price">$39.99</span>
+                        <span class="original-price">$49.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(128)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Creatina Monohidrato -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-20%</span>
+                    <img src="https://m.media-amazon.com/images/I/71B7W90YtTL.jpg" alt="Creatina Monohidrato">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CREATINA MONOHIDRATO</h3>
+                    <p class="product-brand">Gainsamo Pure</p>
+                    <div class="product-price">
+                        <span class="current-price">$29.99</span>
+                        <span class="original-price">$37.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(256)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- HMB -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://maximizarte.com.mx/images/thumbnails/590/590/detailed/11/1673019767.webp" alt="HMB">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HMB AVANZADO</h3>
+                    <p class="product-brand">Gainsamo Science</p>
+                    <div class="product-price">
+                        <span class="current-price">$34.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(87)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- BCAA -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">NUEVO</span>
+                    <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/evl/evl02699/y/24.jpg" alt="BCAA">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">BCAA ENERGÉTICO</h3>
+                    <p class="product-brand">Gainsamo Fuel</p>
+                    <div class="product-price">
+                        <span class="current-price">$27.99</span>
+                        <span class="original-price">$32.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(194)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de productos destacados - Pérdida de peso -->
+    <section class="featured-products">
+        <h2 class="section-title">SUPLEMENTOS PARA PÉRDIDA DE PESO</h2>
+        <div class="products-grid">
+            <!-- Quemador de grasa -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">OFERTA</span>
+                    <img src="https://http2.mlstatic.com/D_809296-MLU75633948516_042024-C.jpg" alt="Quemador de grasa">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">QUEMADOR INTENSO</h3>
+                    <p class="product-brand">Gainsamo Burn</p>
+                    <div class="product-price">
+                        <span class="current-price">$31.99</span>
+                        <span class="original-price">$39.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(142)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Carnitina -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/nrx/nrx00541/l/35.jpg" alt="Carnitina">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">L-CARNITINA 3000</h3>
+                    <p class="product-brand">Gainsamo Pure</p>
+                    <div class="product-price">
+                        <span class="current-price">$24.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>(76)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- CLA -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">NUEVO</span>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_697210-MPE28907620128_122018-O.webp" alt="CLA">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CLA TONIFICADOR</h3>
+                    <p class="product-brand">Gainsamo Science</p>
+                    <div class="product-price">
+                        <span class="current-price">$28.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(53)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Omega-3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01663/l/26.jpg" alt="Omega-3">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">OMEGA-3 ULTRA</h3>
+                    <p class="product-brand">Gainsamo Health</p>
+                    <div class="product-price">
+                        <span class="current-price">$19.99</span>
+                        <span class="original-price">$24.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(168)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de productos destacados - Accesorios -->
+    <section class="featured-products">
+        <h2 class="section-title">ACCESORIOS DE FITNESS</h2>
+        <div class="products-grid">
+            <!-- Cinturón -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/61MSvyMqkgL._AC_UF894,1000_QL80_.jpg" alt="Cinturón">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CINTURÓN DE LEVANTAMIENTO</h3>
+                    <p class="product-brand">Gainsamo Pro</p>
+                    <div class="product-price">
+                        <span class="current-price">$49.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(92)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Straps -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">-15%</span>
+                    <img src="https://http2.mlstatic.com/D_Q_NP_785169-MLU71007145527_082023-O.webp" alt="Straps">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">STRAPS PROFESIONALES</h3>
+                    <p class="product-brand">Gainsamo Grip</p>
+                    <div class="product-price">
+                        <span class="current-price">$19.99</span>
+                        <span class="original-price">$23.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(64)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Rodilleras -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81S7nJCoAdL._AC_UF894,1000_QL80_.jpg" alt="Rodilleras">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">RODILLERAS DE COMPRESIÓN</h3>
+                    <p class="product-brand">Gainsamo Support</p>
+                    <div class="product-price">
+                        <span class="current-price">$29.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>(38)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+            
+            <!-- Monitor cardíaco -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">NUEVO</span>
+                    <img src="https://resources.claroshop.com/medios-plazavip/mkt/649313f4243cd_sin-t-tulo-2000-2000-px-22-png.jpg" alt="Monitor cardíaco">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MONITOR CARDÍACO</h3>
+                    <p class="product-brand">Gainsamo Tech</p>
+                    <div class="product-price">
+                        <span class="current-price">$59.99</span>
+                        <span class="original-price">$69.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(27)</span>
+                    </div>
+                    <button class="add-to-cart">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner promocional -->
+    <section class="promo-banner">
+        <h2>¡ENVÍO GRATIS EN PEDIDOS SUPERIORES A $50!</h2>
+        <p>Además, obtén un 10% de descuento en tu primera compra al suscribirte a nuestro boletín.</p>
+        <a href="#" class="btn">SUSCRÍBETE AHORA</a>
+    </section>
+
+    <!-- Sección de marcas -->
+    <section class="brands-section">
+        <h2 class="section-title">MARCAS DESTACADAS</h2>
+        <div class="brands-grid">
+            <div class="brand-item">
+                <img src="https://cdn.prod.website-files.com/60550b152e8de8913d38fa77/6436de06bacf77198b07ba34_ON_PrimaryLogo_Black.png" alt="Optimum Nutrition">
+            </div>
+            <div class="brand-item">
+                <img src="https://suplementosmx.com/cdn/shop/collections/BSN_758x500.png?v=1568924142" alt="BSN">
+            </div>
+            <div class="brand-item">
+                <img src="https://www.muscletech.com/cdn/shop/files/muscletech-logo-blk-checkout_280x.png?v=1695820629" alt="MuscleTech">
+            </div>
+            <div class="brand-item">
+                <img src="https://suplementosmx.com/cdn/shop/collections/Dymatize_758x500.png?v=1568924325" alt="Dymatize">
+            </div>
+            <div class="brand-item">
+                <img src="https://www.universalusa.com/wp-content/uploads/2022/12/universal-logo-hero.png" alt="Universal Nutrition">
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>COMPAÑÍA</h3>
+                <ul>
+                    <li><a href="COMPAÑIA/nosotros.html">Nosotros</a></li>
+                    <li><a href="COMPAÑIA/trabaja.html">Trabaja con nosotros</a></li>
+                    <li><a href="COMPAÑIA/sostentabilidad.html">Sostenibilidad</a></li>
+                    <li><a href="COMPAÑIA/prensa.html">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>AYUDA</h3>
+                <ul>
+                    <li><a href="AYUDA/ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="AYUDA/estado.html">Estado del pedido</a></li>
+                    <li><a href="AYUDA/devoluciones.html">Devoluciones</a></li>
+                    <li><a href="AYUDA/metodos.html">Métodos de pago</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="LEGAL/terminos.html">Términos y condiciones</a></li>
+                    <li><a href="LEGAL/privacidad.html">Política de privacidad</a></li>
+                    <li><a href="LEGAL/aviso.html">Aviso legal</a></li>
+                    <li><a href="LEGAL/cookies.html">Política de cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONTACTO</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 800-GAIN-SAMO</li>
+                    <li><i class="fas fa-envelope"></i> info@gainsamo.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> CDMX, México</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>NEWSLETTER</h3>
+                <p>Suscríbete para recibir ofertas exclusivas y consejos de fitness.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Tu correo electrónico">
+                    <button type="submit" class="newsletter-btn">SUSCRIBIRME</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 GAINSAMO. TODOS LOS DERECHOS RESERVADOS.
+        </div>
+    </footer>
+
+    <script>
+        // Motor de búsqueda
+        const searchIcon = document.querySelector('.search-icon');
+        const searchBar = document.querySelector('.search-bar');
+
+        searchIcon.addEventListener('click', function() {
+            if (searchBar.value.trim()) {
+                window.location.href = `busqueda.html?q=${encodeURIComponent(searchBar.value.trim())}`;
+            }
+        });
+
+        searchBar.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchBar.value.trim()) {
+                window.location.href = `busqueda.html?q=${encodeURIComponent(searchBar.value.trim())}`;
+            }
+        });
+
+        // Contador del carrito (ejemplo)
+        let cartCount = 3;
+        const cartCountElement = document.querySelector('.cart-count');
+        
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+                // Aquí iría la lógica para añadir al carrito
+                alert('Producto añadido al carrito');
+            });
+        });
+
+        // Smooth scrolling para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Alternar visibilidad del submenú al hacer clic en el ícono de usuario
+        const userIcon = document.querySelector('.user-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        userIcon.addEventListener('click', function (e) {
+            e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Cerrar el submenú si se hace clic fuera de él
+        document.addEventListener('click', function (e) {
+            if (!dropdownMenu.contains(e.target) && !userIcon.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Variables para manejar el carrito
+        const cart = [];
+        const cartDropdown = document.querySelector('.cart-dropdown');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const totalPriceElement = document.querySelector('.total-price');
+        const cartIcon = document.querySelector('.fa-shopping-cart');
+
+        // Mostrar/ocultar el menú desplegable del carrito
+        cartIcon.addEventListener('click', () => {
+            cartDropdown.classList.toggle('active');
+        });
+
+        // Función para actualizar el carrito
+        function updateCart() {
+            // Limpiar el contenedor de los productos
+            cartItemsContainer.innerHTML = '';
+
+            // Agregar los productos al menú desplegable
+            let total = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">$${item.price.toFixed(2)}</span>
+                    <button class="remove-btn" data-index="${index}">X</button>
+                `;
+                cartItemsContainer.appendChild(li);
+                total += item.price;
+            });
+
+            // Actualizar el precio total
+            totalPriceElement.textContent = `$${total.toFixed(2)}`;
+
+            // Agregar funcionalidad para eliminar productos
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = this.getAttribute('data-index');
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // Agregar productos al carrito
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-title').textContent;
+                const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace('$', ''));
+
+                // Agregar el producto al carrito
+                cart.push({ name: productName, price: productPrice });
+                updateCart();
+
+                // Mostrar una notificación
+                alert(`${productName} añadido al carrito.`);
+            });
+        });
+    </script>
+</body>
+</html>
